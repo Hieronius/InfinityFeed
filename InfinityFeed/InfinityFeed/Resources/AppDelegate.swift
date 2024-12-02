@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  InfinityFeed
-//
-//  Created by Арсентий Халимовский on 30.11.2024.
-//
-
 import UIKit
 
 @main
