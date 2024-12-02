@@ -11,7 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		window = UIWindow(windowScene: windowScene)
 
-		let rootViewController = FeedViewController()
+		let rootViewController = FeedViewController(loadService: AnimeLoaderService())
 
 		window?.rootViewController = rootViewController
 

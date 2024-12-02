@@ -12,6 +12,9 @@
 		DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA763402CFAA915000E77FA /* FeedViewController.swift */; };
 		DDA763462CFAA917000E77FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA763452CFAA917000E77FA /* Assets.xcassets */; };
 		DDA763492CFAA917000E77FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA763472CFAA917000E77FA /* LaunchScreen.storyboard */; };
+		DDB0DEC12CFD64C50042C9A9 /* AnimeLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC02CFD64C50042C9A9 /* AnimeLoaderService.swift */; };
+		DDB0DEC32CFD67070042C9A9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC22CFD67070042C9A9 /* Response.swift */; };
+		DDB0DEC52CFD83380042C9A9 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC42CFD83380042C9A9 /* Anime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		DDA763452CFAA917000E77FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDA763482CFAA917000E77FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDA7634A2CFAA917000E77FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDB0DEC02CFD64C50042C9A9 /* AnimeLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeLoaderService.swift; sourceTree = "<group>"; };
+		DDB0DEC22CFD67070042C9A9 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DDB0DEC42CFD83380042C9A9 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				DDA9D6822CFC1CAE00C9D2A9 /* Models */,
+				DDA9D67F2CFC1C9600C9D2A9 /* Screens */,
 				DDA9D6812CFC1CA500C9D2A9 /* Network */,
 				DDA9D6802CFC1C9A00C9D2A9 /* Persistence */,
-				DDA9D67F2CFC1C9600C9D2A9 /* Screens */,
 				DDA9D67E2CFC1C5100C9D2A9 /* Helpers */,
 				DDA9D67D2CFC1C4100C9D2A9 /* Resources */,
 			);
@@ -101,6 +107,7 @@
 		DDA9D6812CFC1CA500C9D2A9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DDB0DEC02CFD64C50042C9A9 /* AnimeLoaderService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -108,6 +115,8 @@
 		DDA9D6822CFC1CAE00C9D2A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DDB0DEC22CFD67070042C9A9 /* Response.swift */,
+				DDB0DEC42CFD83380042C9A9 /* Anime.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,7 +201,10 @@
 			files = (
 				DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */,
 				DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */,
+				DDB0DEC32CFD67070042C9A9 /* Response.swift in Sources */,
 				DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */,
+				DDB0DEC12CFD64C50042C9A9 /* AnimeLoaderService.swift in Sources */,
+				DDB0DEC52CFD83380042C9A9 /* Anime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
