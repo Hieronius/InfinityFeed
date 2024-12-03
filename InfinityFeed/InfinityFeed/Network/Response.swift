@@ -14,7 +14,8 @@ struct Response: Codable {
 
 // MARK: - Datum
 struct Datum: Codable {
-	let id, type: String
+	let id: String
+	let type: TypeEnum
 	let links: DatumLinks
 	let attributes: Attributes
 	let relationships: [String: Relationship]
@@ -34,12 +35,18 @@ struct Attributes: Codable {
 	let startDate, endDate: String
 	let nextRelease: JSONNull?
 	let popularityRank, ratingRank: Int
-	let ageRating, ageRatingGuide, subtype, status: String
+	let ageRating: AgeRating
+	let ageRatingGuide: String
+	let subtype: ShowTypeEnum
+	let status: Status
 	let tba: String?
 	let posterImage: PosterImage
-	let coverImage: CoverImage
-	let episodeCount, episodeLength, totalLength: Int
-	let youtubeVideoID, showType: String
+	let coverImage: CoverImage?
+	let episodeCount: Int
+	let episodeLength: Int?
+	let totalLength: Int
+	let youtubeVideoID: String
+	let showType: ShowTypeEnum
 	let nsfw: Bool
 
 	enum CodingKeys: String, CodingKey {
@@ -47,6 +54,11 @@ struct Attributes: Codable {
 		case youtubeVideoID = "youtubeVideoId"
 		case showType, nsfw
 	}
+}
+
+enum AgeRating: String, Codable {
+	case pg = "PG"
+	case r = "R"
 }
 
 // MARK: - CoverImage
@@ -79,9 +91,19 @@ struct PosterImage: Codable {
 	let meta: CoverImageMeta
 }
 
+enum ShowTypeEnum: String, Codable {
+	case movie = "movie"
+	case tv = "TV"
+}
+
+enum Status: String, Codable {
+	case finished = "finished"
+}
+
 // MARK: - Titles
 struct Titles: Codable {
-	let en, enJp, jaJp: String
+	let en: String?
+	let enJp, jaJp: String
 	let enUs: String?
 
 	enum CodingKeys: String, CodingKey {
@@ -114,6 +136,10 @@ struct RelationshipLinks: Codable {
 		case linksSelf = "self"
 		case related
 	}
+}
+
+enum TypeEnum: String, Codable {
+	case anime = "anime"
 }
 
 // MARK: - ResponseLinks

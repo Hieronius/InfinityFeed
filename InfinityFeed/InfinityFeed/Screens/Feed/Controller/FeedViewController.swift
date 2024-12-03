@@ -19,7 +19,26 @@ final class FeedViewController: GenericViewController<FeedView> {
 		super.viewDidLoad()
 
 		rootView.backgroundColor = .green
-		loadAnimes()
+		 loadAnimes()
+
+		 populateUI()
+
+	}
+}
+
+// MARK: - UI
+
+extension FeedViewController {
+
+	func populateUI() {
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+			guard let self else { return }
+			self.rootView.testTitle.text = self.animes[0].title
+			self.rootView.testDescription.text = self.animes[0].description
+			self.rootView.testImage.image = self.animes[0].image
+			print(self.animes.count)
+		}
 	}
 }
 
@@ -49,9 +68,9 @@ private extension FeedViewController {
 	}
 
 	func fetchAnimes(from response: Response) async throws -> [Anime] {
-		var repos: [Anime] = []
+		var animes: [Anime] = []
 
-		guard !response.data.isEmpty else { return repos }
+		guard !response.data.isEmpty else { return animes }
 
 		for datum in response.data {
 
@@ -72,11 +91,13 @@ private extension FeedViewController {
 				}
 			}
 
-			let localRepo = Anime(title: title, description: description, image: localImage)
+			let anime = Anime(title: title,
+								  description: description,
+								  image: localImage)
 
-			repos.append(localRepo)
+			animes.append(anime)
 		}
-		return repos
+		return animes
 	}
 
 }

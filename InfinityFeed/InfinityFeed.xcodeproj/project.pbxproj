@@ -7,19 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD3145DD2CFEAD8F0098DA68 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3145DC2CFEAD8F0098DA68 /* Response.swift */; };
 		DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633C2CFAA915000E77FA /* AppDelegate.swift */; };
 		DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */; };
 		DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA763402CFAA915000E77FA /* FeedViewController.swift */; };
 		DDA763462CFAA917000E77FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA763452CFAA917000E77FA /* Assets.xcassets */; };
 		DDA763492CFAA917000E77FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA763472CFAA917000E77FA /* LaunchScreen.storyboard */; };
 		DDB0DEC12CFD64C50042C9A9 /* AnimeLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC02CFD64C50042C9A9 /* AnimeLoaderService.swift */; };
-		DDB0DEC32CFD67070042C9A9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC22CFD67070042C9A9 /* Response.swift */; };
 		DDB0DEC52CFD83380042C9A9 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC42CFD83380042C9A9 /* Anime.swift */; };
 		DDB0DEC72CFDA72C0042C9A9 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC62CFDA72C0042C9A9 /* GenericViewController.swift */; };
 		DDB0DEC92CFDA7780042C9A9 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC82CFDA7780042C9A9 /* FeedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD3145DC2CFEAD8F0098DA68 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DDA763392CFAA915000E77FA /* InfinityFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinityFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA7633C2CFAA915000E77FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,7 +29,6 @@
 		DDA763482CFAA917000E77FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDA7634A2CFAA917000E77FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDB0DEC02CFD64C50042C9A9 /* AnimeLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeLoaderService.swift; sourceTree = "<group>"; };
-		DDB0DEC22CFD67070042C9A9 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DDB0DEC42CFD83380042C9A9 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		DDB0DEC62CFDA72C0042C9A9 /* GenericViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericViewController.swift; sourceTree = "<group>"; };
 		DDB0DEC82CFDA7780042C9A9 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		DDA9D6812CFC1CA500C9D2A9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				DDB0DEC22CFD67070042C9A9 /* Response.swift */,
+				DD3145DC2CFEAD8F0098DA68 /* Response.swift */,
 				DDB0DEC02CFD64C50042C9A9 /* AnimeLoaderService.swift */,
 			);
 			path = Network;
@@ -224,8 +224,8 @@
 				DDB0DEC92CFDA7780042C9A9 /* FeedView.swift in Sources */,
 				DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */,
 				DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */,
-				DDB0DEC32CFD67070042C9A9 /* Response.swift in Sources */,
 				DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */,
+				DD3145DD2CFEAD8F0098DA68 /* Response.swift in Sources */,
 				DDB0DEC72CFDA72C0042C9A9 /* GenericViewController.swift in Sources */,
 				DDB0DEC12CFD64C50042C9A9 /* AnimeLoaderService.swift in Sources */,
 				DDB0DEC52CFD83380042C9A9 /* Anime.swift in Sources */,
@@ -372,8 +372,8 @@
 				INFOPLIST_FILE = InfinityFeed/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,9 +381,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = HieroniusTeam.InfinityFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -399,8 +402,8 @@
 				INFOPLIST_FILE = InfinityFeed/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,9 +411,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = HieroniusTeam.InfinityFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

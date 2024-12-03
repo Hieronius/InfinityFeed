@@ -1,5 +1,7 @@
 import Foundation
 
+// MARK: TODO - can't get objects on page 1+
+
 protocol AnimeLoaderServiceProtocol {
 
 	var baseURL: String { get }
@@ -12,7 +14,7 @@ final class AnimeLoaderService: AnimeLoaderServiceProtocol {
 
 	let baseURL = "https://kitsu.io/api/edge/anime"
 
-	private var currentPage = 0
+	private var currentPage = 2
 	private let perPage = 4 // if set to 5 - crush
 
 	private(set) var session: URLSession
@@ -32,7 +34,7 @@ final class AnimeLoaderService: AnimeLoaderServiceProtocol {
 		let (data, _) = try await session.data(from: url)
 		let animes = try JSONDecoder().decode(Response.self, from: data)
 
-		// MARK: page counter += 1
+		// MARK: TODO page counter += 1
 		return animes
 	}
 }
