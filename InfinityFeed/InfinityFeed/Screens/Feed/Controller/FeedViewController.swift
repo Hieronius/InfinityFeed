@@ -1,6 +1,6 @@
 import UIKit
 
-final class FeedViewController: UIViewController {
+final class FeedViewController: GenericViewController<FeedView> {
 
 	var loadService: AnimeLoaderServiceProtocol
 	var animes: [Anime] = []
@@ -10,6 +10,7 @@ final class FeedViewController: UIViewController {
 		super.init(nibName: nil, bundle: nil)
 	}
 
+	@available(*, unavailable)
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -17,7 +18,7 @@ final class FeedViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		view.backgroundColor = .green
+		rootView.backgroundColor = .green
 		loadAnimes()
 	}
 }
