@@ -1,7 +1,7 @@
 import Foundation
 
 
-protocol AnimeLoaderServiceProtocol {
+protocol AnimeLoaderProtocol: AnyObject {
 
 	var baseURL: String { get }
 	var session: URLSession { get }
@@ -10,7 +10,7 @@ protocol AnimeLoaderServiceProtocol {
 	func incrementPage()
 }
 
-final class AnimeLoaderService: AnimeLoaderServiceProtocol {
+final class AnimeLoader: AnimeLoaderProtocol {
 
 	let baseURL = "https://kitsu.app/api/edge/anime"
 
