@@ -1,6 +1,5 @@
 import Foundation
 
-// MARK: TODO - can't get objects on page 1+
 
 protocol AnimeLoaderServiceProtocol {
 
@@ -8,19 +7,26 @@ protocol AnimeLoaderServiceProtocol {
 	var session: URLSession { get }
 
 	func getData() async throws -> Response
+	func incrementPage()
 }
 
 final class AnimeLoaderService: AnimeLoaderServiceProtocol {
 
-	let baseURL = "https://kitsu.io/api/edge/anime"
+	let baseURL = "https://kitsu.app/api/edge/anime"
 
-	private var currentPage = 2
-	private let perPage = 4 // if set to 5 - crush
+	private var currentPage = 0
+	private let perPage = 3 // if set to 5 - crush
 
 	private(set) var session: URLSession
 
 	init(session: URLSession = .shared) {
 		self.session = session
+	}
+
+	func incrementPage() {
+		print("this is a current page")
+		currentPage += 1
+		print(currentPage)
 	}
 
 	func getData() async throws -> Response {

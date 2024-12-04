@@ -30,8 +30,11 @@ extension FeedView {
 		collectionView = UICollectionView(frame: bounds,
 										  collectionViewLayout: layout)
 
-		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		collectionView.showsVerticalScrollIndicator = false
+		
 		addSubview(collectionView)
+
+		collectionView.translatesAutoresizingMaskIntoConstraints = false
 
 		collectionView.register(FeedCell.self,
 								forCellWithReuseIdentifier: "FeedCell")
@@ -47,9 +50,6 @@ extension FeedView {
 			collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
 
 		])
-
-//		collectionView.backgroundColor = .red
-		print("1 - Create Compositional Layout and Instantiate CollectionView with Custom FeedCell and LoadingIndicator")
 
 	}
 

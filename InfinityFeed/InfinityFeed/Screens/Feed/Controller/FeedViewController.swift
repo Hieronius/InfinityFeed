@@ -4,7 +4,7 @@ final class FeedViewController: GenericViewController<FeedView> {
 
 	var loadService: AnimeLoaderServiceProtocol
 	var isLoadingMoreData = false
-	var animes: [Anime] = []
+	var animeCash: [Anime] = []
 
 	var dataSource: UICollectionViewDiffableDataSource<Section, Anime>?
 
@@ -20,24 +20,10 @@ final class FeedViewController: GenericViewController<FeedView> {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// 1. Load data from the server
-		// 2. Parse the data into animes array
-		// 3. Setup CollectionView, custom cells, data source
-		// 4. Populate collection view with animes items
-		// 5. Be ready for new data/changes -> apply new snapshot
-//		scrollViewDidScroll(rootView.collectionView)
-		loadAnimes()
-		
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-			self.rootView.collectionView.delegate = self
-//			self.rootView.backgroundColor = .lightGray
-			self.setupDataSource()
-			self.applySnapshot()
-			self.rootView.collectionView.reloadData()
-		}
-
-		 // populateUI()
+		rootView.collectionView.delegate = self
+		setupDataSource()
+		loadInitialData()
 
 	}
 }
@@ -81,20 +67,19 @@ extension FeedViewController {
 
 			footer.activityIndicator.startAnimating()
 
-			print("3 - Create and setup DiffableDataSource with CollectionView and Anime item")
-
 			return footer
 		}
 	}
 
-	func applySnapshot() {
+	@MainActor
+	func applySnapshot(_ items: [Anime]) {
 		var snapshot = NSDiffableDataSourceSnapshot<Section, Anime>()
 		snapshot.appendSections([Section.main])
-		snapshot.appendItems(animes)
+		snapshot.appendItems(items)
 
 		dataSource?.apply(snapshot, animatingDifferences: true)
+		print("another snapshot has been applied")
 
-		print("4 - get current items from `animes` array and populate collectionView with them")
 	}
 }
 
@@ -102,20 +87,27 @@ extension FeedViewController {
 
 private extension FeedViewController {
 
-	func loadAnimes() {
+	func loadInitialData() {
 		Task {
 			do {
 				let rawData = try await loadService.getData()
+				let initialAnimes = try await fetchAnimes(from: rawData)
 
-				 animes = try await fetchAnimes(from: rawData)
-				print("2 - Load Animes from API and Pass it to `animes` array")
-				print(animes)
+				// Populate cash and storage with initial data
+				animeCash += initialAnimes
+				loadService.incrementPage()
+
+				applySnapshot(animeCash) // Apply the initial snapshot with loaded animes
+				print("this is an amount of cash animes")
+				print(animeCash.count)
+				print(animeCash.map {$0.title})
 			} catch {
-				print("Error fetching animes: \(error)")
+				print("Error loading initial data: \(error)")
 			}
-
 		}
 	}
+
+	// MARK: TODO: IT SHOULD BE AN ANOTHER ANIME FETCHER SERVICE
 
 	func loadImage(from url: URL) async throws -> UIImage {
 		let (data, _) = try await URLSession.shared.data(from: url)
@@ -150,7 +142,7 @@ private extension FeedViewController {
 			}
 
 			let anime = Anime(id: UUID(),
-							  title: title,
+							  title: title ?? "Unowned",
 							  description: description,
 							  image: localImage)
 
@@ -160,8 +152,6 @@ private extension FeedViewController {
 	}
 
 }
-
-// MARK: - Implementation of infinity Feed. ALREADY WORKING!
 
 extension FeedViewController: UICollectionViewDelegate {
 
@@ -174,21 +164,39 @@ extension FeedViewController: UICollectionViewDelegate {
 		}
 	}
 
-
-	// MARK: 5 - Get more data and change the snapShot of DataSource
 	func loadMoreData() {
+		print("LOADING MORE DATA")
+		guard !isLoadingMoreData else { return }
 		isLoadingMoreData = true
 
-		DispatchQueue.global().asyncAfter(deadline: .now() + 1) { // Simulate network delay
-			guard var snapshot = self.dataSource?.snapshot() else { return }
+		Task {
+			do {
+				let rawData = try await loadService.getData()
+				let newAnimes = try await fetchAnimes(from: rawData)
 
-			snapshot.appendItems(self.animes)
+				loadService.incrementPage()
 
-			DispatchQueue.main.async {
-				self.dataSource?.apply(snapshot, animatingDifferences: true)
-				self.isLoadingMoreData = false
-				self.rootView.collectionView.reloadData() // Ensure loading indicators are updated.
+				// Filter out duplicates based on title
+				let uniqueNewAnimes = newAnimes.filter { newAnime in
+					!animeCash.contains { existingAnime in
+						existingAnime.title == newAnime.title // Compare by title for uniqueness
+					}
+				}
+				
+				// Append unique items to animeCash
+				animeCash.append(contentsOf: uniqueNewAnimes)
+
+				applySnapshot(animeCash)
+				print("this is an amount of cash animes")
+				print(animeCash.count)
+				print(animeCash.map {$0.title})
+
+			} catch {
+				print("Error loading more data: \(error)")
 			}
+
+			isLoadingMoreData = false
+
 		}
 	}
 }

@@ -38,7 +38,6 @@ extension FeedCell {
 		imageView.image = anime.image
 		titleLabel.text = anime.title
 		descriptionLabel.text = anime.description
-		print("5 - cells get data")
 	}
 }
 
@@ -67,23 +66,21 @@ extension FeedCell {
 
 	func setupAppearance() {
 
-//		backgroundColor = .yellow
-
-		containerView.backgroundColor = .lightGray
-
 		horizontalStackView.axis = .horizontal
-		horizontalStackView.backgroundColor = .gray
 		horizontalStackView.distribution = .fillEqually
 
 		verticalStackView.axis = .vertical
-		verticalStackView.backgroundColor = .darkGray
 		verticalStackView.distribution = .fill
 		verticalStackView.spacing =	5
 
 		imageView.contentMode = .scaleAspectFit
 
+		// MARK: TODO: Implement larger title and change it's color
+		titleLabel.textColor = .white
+		titleLabel.font = .boldSystemFont(ofSize: 25)
 		titleLabel.numberOfLines = 0
 		descriptionLabel.numberOfLines = 0
+		descriptionLabel.font = .italicSystemFont(ofSize: 18)
 
 	}
 }

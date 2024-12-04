@@ -23,31 +23,32 @@ struct Datum: Codable {
 
 // MARK: - Attributes
 struct Attributes: Codable {
-	let createdAt, updatedAt, slug, synopsis: String
+	let createdAt, updatedAt, slug, synopsis: String?
 	let description: String
-	let coverImageTopOffset: Int
+	let coverImageTopOffset: Int?
 	let titles: Titles
-	let canonicalTitle: String
-	let abbreviatedTitles: [String]
-	let averageRating: String
-	let ratingFrequencies: [String: String]
-	let userCount, favoritesCount: Int
-	let startDate, endDate: String
-	let nextRelease: JSONNull?
-	let popularityRank, ratingRank: Int
-	let ageRating: AgeRating
-	let ageRatingGuide: String
-	let subtype: ShowTypeEnum
-	let status: Status
-	let tba: String?
+	let canonicalTitle: String?
+	let abbreviatedTitles: [String]?
+	let averageRating: String?
+	let ratingFrequencies: [String: String]?
+	let userCount, favoritesCount: Int?
+	let startDate, endDate: String?
+//	let nextRelease: JSONNull?
+	let nextRelease: String?
+	let popularityRank, ratingRank: Int?
+	let ageRating: AgeRating?
+	let ageRatingGuide: String?
+	let subtype: ShowTypeEnum?
+	let status: Status?
+	let tba: String??
 	let posterImage: PosterImage
 	let coverImage: CoverImage?
-	let episodeCount: Int
+	let episodeCount: Int?
 	let episodeLength: Int?
-	let totalLength: Int
-	let youtubeVideoID: String
-	let showType: ShowTypeEnum
-	let nsfw: Bool
+	let totalLength: Int?
+	let youtubeVideoID: String?
+	let showType: ShowTypeEnum?
+	let nsfw: Bool?
 
 	enum CodingKeys: String, CodingKey {
 		case createdAt, updatedAt, slug, synopsis, description, coverImageTopOffset, titles, canonicalTitle, abbreviatedTitles, averageRating, ratingFrequencies, userCount, favoritesCount, startDate, endDate, nextRelease, popularityRank, ratingRank, ageRating, ageRatingGuide, subtype, status, tba, posterImage, coverImage, episodeCount, episodeLength, totalLength
@@ -98,6 +99,8 @@ enum ShowTypeEnum: String, Codable {
 
 enum Status: String, Codable {
 	case finished = "finished"
+	case ongoing = "ongoing" // Add other relevant cases
+	case current = "current" // Add this case for the new value
 }
 
 // MARK: - Titles

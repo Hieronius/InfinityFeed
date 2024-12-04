@@ -22,7 +22,6 @@ final class LoadingReusableView: UICollectionReusableView {
 extension LoadingReusableView {
 
 	func setupView() {
-		backgroundColor = .darkGray
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(activityIndicator)
 
