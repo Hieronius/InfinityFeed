@@ -48,7 +48,6 @@ extension FeedViewController {
 
 			guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as? FeedCell
 			else {
-				print("found no FeedCells")
 				return UICollectionViewCell()
 
 			}
@@ -78,7 +77,6 @@ extension FeedViewController {
 		snapshot.appendItems(items)
 
 		dataSource?.apply(snapshot, animatingDifferences: true)
-		print("another snapshot has been applied")
 
 	}
 }
@@ -93,14 +91,10 @@ private extension FeedViewController {
 				let rawData = try await loadService.getData()
 				let initialAnimes = try await fetchAnimes(from: rawData)
 
-				// Populate cash and storage with initial data
 				animeCash += initialAnimes
 				loadService.incrementPage()
 
-				applySnapshot(animeCash) // Apply the initial snapshot with loaded animes
-				print("this is an amount of cash animes")
-				print(animeCash.count)
-				print(animeCash.map {$0.title})
+				applySnapshot(animeCash)
 			} catch {
 				print("Error loading initial data: \(error)")
 			}
@@ -121,10 +115,9 @@ private extension FeedViewController {
 		var animes: [Anime] = []
 
 		guard !response.data.isEmpty else { return animes }
-
 		for datum in response.data {
 
-			let attributes = datum.attributes
+			guard let attributes = datum.attributes else { return animes }
 
 			let title = attributes.canonicalTitle
 			let description = attributes.synopsis
@@ -165,7 +158,6 @@ extension FeedViewController: UICollectionViewDelegate {
 	}
 
 	func loadMoreData() {
-		print("LOADING MORE DATA")
 		guard !isLoadingMoreData else { return }
 		isLoadingMoreData = true
 
@@ -176,20 +168,16 @@ extension FeedViewController: UICollectionViewDelegate {
 
 				loadService.incrementPage()
 
-				// Filter out duplicates based on title
+
 				let uniqueNewAnimes = newAnimes.filter { newAnime in
 					!animeCash.contains { existingAnime in
-						existingAnime.title == newAnime.title // Compare by title for uniqueness
+						existingAnime.title == newAnime.title
 					}
 				}
-				
-				// Append unique items to animeCash
+
 				animeCash.append(contentsOf: uniqueNewAnimes)
 
 				applySnapshot(animeCash)
-				print("this is an amount of cash animes")
-				print(animeCash.count)
-				print(animeCash.map {$0.title})
 
 			} catch {
 				print("Error loading more data: \(error)")

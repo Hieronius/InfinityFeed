@@ -15,7 +15,7 @@ final class AnimeLoaderService: AnimeLoaderServiceProtocol {
 	let baseURL = "https://kitsu.app/api/edge/anime"
 
 	private var currentPage = 0
-	private let perPage = 3 // if set to 5 - crush
+	private var perPage = 5 // if set to 5 - crush
 
 	private(set) var session: URLSession
 
@@ -25,7 +25,8 @@ final class AnimeLoaderService: AnimeLoaderServiceProtocol {
 
 	func incrementPage() {
 		print("this is a current page")
-		currentPage += 1
+		currentPage += 5
+
 		print(currentPage)
 	}
 

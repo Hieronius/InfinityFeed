@@ -1,8 +1,3 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let response = try? JSONDecoder().decode(Response.self, from: jsonData)
-
 import Foundation
 
 // MARK: - Response
@@ -17,7 +12,7 @@ struct Datum: Codable {
 	let id: String
 	let type: TypeEnum
 	let links: DatumLinks
-	let attributes: Attributes
+	let attributes: Attributes?
 	let relationships: [String: Relationship]
 }
 
@@ -33,7 +28,6 @@ struct Attributes: Codable {
 	let ratingFrequencies: [String: String]?
 	let userCount, favoritesCount: Int?
 	let startDate, endDate: String?
-//	let nextRelease: JSONNull?
 	let nextRelease: String?
 	let popularityRank, ratingRank: Int?
 	let ageRating: AgeRating?
@@ -95,12 +89,13 @@ struct PosterImage: Codable {
 enum ShowTypeEnum: String, Codable {
 	case movie = "movie"
 	case tv = "TV"
+	case ova = "OVA"
 }
 
 enum Status: String, Codable {
 	case finished = "finished"
-	case ongoing = "ongoing" // Add other relevant cases
-	case current = "current" // Add this case for the new value
+	case ongoing = "ongoing"
+	case current = "current"
 }
 
 // MARK: - Titles
