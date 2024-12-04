@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DD3145DD2CFEAD8F0098DA68 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3145DC2CFEAD8F0098DA68 /* Response.swift */; };
+		DD3145DF2CFEB0C40098DA68 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3145DE2CFEB0C40098DA68 /* Section.swift */; };
+		DD3145E12CFEB8910098DA68 /* LoadingReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3145E02CFEB8910098DA68 /* LoadingReusableView.swift */; };
+		DD3145E32CFEC6010098DA68 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3145E22CFEC6010098DA68 /* FeedCell.swift */; };
 		DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633C2CFAA915000E77FA /* AppDelegate.swift */; };
 		DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */; };
 		DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA763402CFAA915000E77FA /* FeedViewController.swift */; };
@@ -21,6 +24,9 @@
 
 /* Begin PBXFileReference section */
 		DD3145DC2CFEAD8F0098DA68 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DD3145DE2CFEB0C40098DA68 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		DD3145E02CFEB8910098DA68 /* LoadingReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingReusableView.swift; sourceTree = "<group>"; };
+		DD3145E22CFEC6010098DA68 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		DDA763392CFAA915000E77FA /* InfinityFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinityFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA7633C2CFAA915000E77FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				DDB0DEC42CFD83380042C9A9 /* Anime.swift */,
+				DD3145DE2CFEB0C40098DA68 /* Section.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -131,7 +138,6 @@
 				DDA9D6822CFC1CAE00C9D2A9 /* Model */,
 				DDB0DECB2CFDA7DD0042C9A9 /* Controller */,
 				DDB0DECA2CFDA7DA0042C9A9 /* View */,
-				DDB0DEC82CFDA7780042C9A9 /* FeedView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -139,6 +145,9 @@
 		DDB0DECA2CFDA7DA0042C9A9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DDB0DEC82CFDA7780042C9A9 /* FeedView.swift */,
+				DD3145E02CFEB8910098DA68 /* LoadingReusableView.swift */,
+				DD3145E22CFEC6010098DA68 /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -221,13 +230,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD3145DF2CFEB0C40098DA68 /* Section.swift in Sources */,
 				DDB0DEC92CFDA7780042C9A9 /* FeedView.swift in Sources */,
+				DD3145E32CFEC6010098DA68 /* FeedCell.swift in Sources */,
 				DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */,
 				DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */,
 				DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */,
 				DD3145DD2CFEAD8F0098DA68 /* Response.swift in Sources */,
 				DDB0DEC72CFDA72C0042C9A9 /* GenericViewController.swift in Sources */,
 				DDB0DEC12CFD64C50042C9A9 /* AnimeLoaderService.swift in Sources */,
+				DD3145E12CFEB8910098DA68 /* LoadingReusableView.swift in Sources */,
 				DDB0DEC52CFD83380042C9A9 /* Anime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

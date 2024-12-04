@@ -1,7 +1,8 @@
 import UIKit
 
-struct Anime {
+struct Anime: Hashable {
 
+	let id: UUID
 	let title: String
 	let description: String?
 	let image: UIImage?

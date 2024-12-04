@@ -3,7 +3,10 @@ import UIKit
 final class FeedViewController: GenericViewController<FeedView> {
 
 	var loadService: AnimeLoaderServiceProtocol
+	var isLoadingMoreData = false
 	var animes: [Anime] = []
+
+	var dataSource: UICollectionViewDiffableDataSource<Section, Anime>?
 
 	init(loadService: AnimeLoaderServiceProtocol) {
 		self.loadService = loadService
@@ -17,28 +20,81 @@ final class FeedViewController: GenericViewController<FeedView> {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		// 1. Load data from the server
+		// 2. Parse the data into animes array
+		// 3. Setup CollectionView, custom cells, data source
+		// 4. Populate collection view with animes items
+		// 5. Be ready for new data/changes -> apply new snapshot
+//		scrollViewDidScroll(rootView.collectionView)
+		loadAnimes()
+		
 
-		rootView.backgroundColor = .green
-		 loadAnimes()
+		DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+			self.rootView.collectionView.delegate = self
+//			self.rootView.backgroundColor = .lightGray
+			self.setupDataSource()
+			self.applySnapshot()
+			self.rootView.collectionView.reloadData()
+		}
 
-		 populateUI()
+		 // populateUI()
 
 	}
 }
 
-// MARK: - UI
+// MARK: - Setup UI
 
 extension FeedViewController {
 
 	func populateUI() {
+		
+	}
+}
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-			guard let self else { return }
-			self.rootView.testTitle.text = self.animes[0].title
-			self.rootView.testDescription.text = self.animes[0].description
-			self.rootView.testImage.image = self.animes[0].image
-			print(self.animes.count)
+// MARK: - Setup DiffableDataSource
+
+extension FeedViewController {
+
+	func setupDataSource() {
+
+		dataSource = UICollectionViewDiffableDataSource<Section, Anime> (collectionView: rootView.collectionView) {
+			(collectionView, indexPath, anime) -> UICollectionViewCell? in
+
+			guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as? FeedCell
+			else {
+				print("found no FeedCells")
+				return UICollectionViewCell()
+
+			}
+			cell.configure(with: anime)
+			return cell
 		}
+
+		// Loading Indicator
+		dataSource?.supplementaryViewProvider = {
+			(collectionView, kind, indexPath) in
+			guard kind == UICollectionView.elementKindSectionFooter
+			else { return nil }
+
+			guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "loadingFooter", for: indexPath) as? LoadingReusableView
+			else { return nil }
+
+			footer.activityIndicator.startAnimating()
+
+			print("3 - Create and setup DiffableDataSource with CollectionView and Anime item")
+
+			return footer
+		}
+	}
+
+	func applySnapshot() {
+		var snapshot = NSDiffableDataSourceSnapshot<Section, Anime>()
+		snapshot.appendSections([Section.main])
+		snapshot.appendItems(animes)
+
+		dataSource?.apply(snapshot, animatingDifferences: true)
+
+		print("4 - get current items from `animes` array and populate collectionView with them")
 	}
 }
 
@@ -52,10 +108,12 @@ private extension FeedViewController {
 				let rawData = try await loadService.getData()
 
 				 animes = try await fetchAnimes(from: rawData)
+				print("2 - Load Animes from API and Pass it to `animes` array")
 				print(animes)
 			} catch {
-				print("Error fetching repositories: \(error)")
+				print("Error fetching animes: \(error)")
 			}
+
 		}
 	}
 
@@ -91,14 +149,47 @@ private extension FeedViewController {
 				}
 			}
 
-			let anime = Anime(title: title,
-								  description: description,
-								  image: localImage)
+			let anime = Anime(id: UUID(),
+							  title: title,
+							  description: description,
+							  image: localImage)
 
 			animes.append(anime)
 		}
 		return animes
 	}
 
+}
+
+// MARK: - Implementation of infinity Feed. ALREADY WORKING!
+
+extension FeedViewController: UICollectionViewDelegate {
+
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		let offsetY = scrollView.contentOffset.y
+		let contentHeight = scrollView.contentSize.height
+
+		if offsetY > contentHeight - scrollView.frame.size.height - 100 && !isLoadingMoreData {
+			loadMoreData()
+		}
+	}
+
+
+	// MARK: 5 - Get more data and change the snapShot of DataSource
+	func loadMoreData() {
+		isLoadingMoreData = true
+
+		DispatchQueue.global().asyncAfter(deadline: .now() + 1) { // Simulate network delay
+			guard var snapshot = self.dataSource?.snapshot() else { return }
+
+			snapshot.appendItems(self.animes)
+
+			DispatchQueue.main.async {
+				self.dataSource?.apply(snapshot, animatingDifferences: true)
+				self.isLoadingMoreData = false
+				self.rootView.collectionView.reloadData() // Ensure loading indicators are updated.
+			}
+		}
+	}
 }
 
