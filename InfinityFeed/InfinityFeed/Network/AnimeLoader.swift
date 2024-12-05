@@ -24,10 +24,7 @@ final class AnimeLoader: AnimeLoaderProtocol {
 	}
 
 	func incrementPage() {
-		print("this is a current page")
 		currentPage += 5
-
-		print(currentPage)
 	}
 
 	func getData() async throws -> Response {
@@ -41,7 +38,6 @@ final class AnimeLoader: AnimeLoaderProtocol {
 		let (data, _) = try await session.data(from: url)
 		let animes = try JSONDecoder().decode(Response.self, from: data)
 
-		// MARK: TODO page counter += 1
 		return animes
 	}
 }

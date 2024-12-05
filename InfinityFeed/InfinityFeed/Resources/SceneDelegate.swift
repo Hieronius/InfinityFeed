@@ -11,8 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		window = UIWindow(windowScene: windowScene)
 
-		let rootViewController = FeedViewController(loadService: AnimeLoader(),
-													fetchService: AnimeFetcher())
+		let rootViewController = FeedViewController(
+			loadService: AnimeLoader(),
+			fetchService: AnimeFetcher(),
+			dataManager: RealmDataManager()
+		)
 
 		window?.rootViewController = rootViewController
 

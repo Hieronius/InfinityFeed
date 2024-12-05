@@ -2,17 +2,20 @@ import UIKit
 
 final class FeedViewController: GenericViewController<FeedView> {
 
-	var loadService: AnimeLoaderProtocol
-	var fetchService: AnimeFetcherProtocol
+	let loadService: AnimeLoaderProtocol
+	let fetchService: AnimeFetcherProtocol
+	let dataManager: RealmDataManagerProtocol
 	var isLoadingMoreData = false
-	var animeCash: [Anime] = []
+	var animesCash: [Anime] = []
 
 	var dataSource: UICollectionViewDiffableDataSource<Section, Anime>?
 
 	init(loadService: AnimeLoaderProtocol,
-		 fetchService: AnimeFetcherProtocol) {
+		 fetchService: AnimeFetcherProtocol,
+		 dataManager: RealmDataManagerProtocol) {
 		self.loadService = loadService
 		self.fetchService = fetchService
+		self.dataManager = dataManager
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -24,20 +27,101 @@ final class FeedViewController: GenericViewController<FeedView> {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		rootView.collectionView.delegate = self
+		setupBehaviour()
 		setupDataSource()
-		loadInitialData()
+		loadAnimesIfNeeded()
 
+	}
+
+	deinit {
+		if dataManager.loadAllAnimes().isEmpty {
+			dataManager.saveAllAnimes(animes: animesCash)
+		} else {
+			dataManager.deleteAllAnimes()
+			dataManager.saveAllAnimes(animes: animesCash)
+		}
 	}
 }
 
-// MARK: - Setup UI
+// MARK: - SetupBehaviour
 
-extension FeedViewController {
+private extension FeedViewController {
 
-	func populateUI() {
-		
+	func setupBehaviour() {
+		rootView.collectionView.delegate = self
 	}
+
+	func loadAnimesIfNeeded() {
+		if dataManager.loadAllAnimes().isEmpty {
+			loadInitialData()
+			print("load first chunk of the content from the server")
+		} else {
+			animesCash = dataManager.loadAllAnimes()
+			applySnapshot(animesCash)
+			print("get animes from the storage")
+		}
+	}
+
+}
+
+// MARK: - Network
+
+private extension FeedViewController {
+
+	func loadInitialData() {
+		Task {
+			do {
+				let rawData = try await loadService.getData()
+				let initialAnimes = try await fetchService.fetchAnimes(from: rawData)
+
+				loadService.incrementPage()
+
+				let uniqueNewAnimes = initialAnimes.filter { newAnime in
+					!animesCash.contains { existingAnime in
+						existingAnime.title == newAnime.title
+					}
+				}
+
+				animesCash.append(contentsOf: uniqueNewAnimes)
+
+				applySnapshot(animesCash)
+			} catch {
+				print("Error loading initial data: \(error)")
+			}
+		}
+	}
+
+	func loadMoreData() {
+		guard !isLoadingMoreData else { return }
+		isLoadingMoreData = true
+
+		Task {
+			do {
+				let rawData = try await loadService.getData()
+				let newAnimes = try await fetchService.fetchAnimes(from: rawData)
+
+				loadService.incrementPage()
+
+
+				let uniqueNewAnimes = newAnimes.filter { newAnime in
+					!animesCash.contains { existingAnime in
+						existingAnime.title == newAnime.title
+					}
+				}
+
+				animesCash.append(contentsOf: uniqueNewAnimes)
+
+				applySnapshot(animesCash)
+
+			} catch {
+				print("Error loading more data: \(error)")
+			}
+
+			isLoadingMoreData = false
+
+		}
+	}
+
 }
 
 // MARK: - Setup DiffableDataSource
@@ -84,27 +168,8 @@ extension FeedViewController {
 	}
 }
 
-// MARK: - Network
 
-private extension FeedViewController {
-
-	func loadInitialData() {
-		Task {
-			do {
-				let rawData = try await loadService.getData()
-				let initialAnimes = try await fetchService.fetchAnimes(from: rawData)
-
-				animeCash += initialAnimes
-				loadService.incrementPage()
-
-				applySnapshot(animeCash)
-			} catch {
-				print("Error loading initial data: \(error)")
-			}
-		}
-	}
-
-}
+// MARK: - UICollectionViewDelegate
 
 extension FeedViewController: UICollectionViewDelegate {
 
@@ -114,37 +179,6 @@ extension FeedViewController: UICollectionViewDelegate {
 
 		if offsetY > contentHeight - scrollView.frame.size.height - 100 && !isLoadingMoreData {
 			loadMoreData()
-		}
-	}
-
-	func loadMoreData() {
-		guard !isLoadingMoreData else { return }
-		isLoadingMoreData = true
-
-		Task {
-			do {
-				let rawData = try await loadService.getData()
-				let newAnimes = try await fetchService.fetchAnimes(from: rawData)
-
-				loadService.incrementPage()
-
-
-				let uniqueNewAnimes = newAnimes.filter { newAnime in
-					!animeCash.contains { existingAnime in
-						existingAnime.title == newAnime.title
-					}
-				}
-
-				animeCash.append(contentsOf: uniqueNewAnimes)
-
-				applySnapshot(animeCash)
-
-			} catch {
-				print("Error loading more data: \(error)")
-			}
-
-			isLoadingMoreData = false
-
 		}
 	}
 }

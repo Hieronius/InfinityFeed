@@ -12,6 +12,9 @@
 		DD3145E12CFEB8910098DA68 /* LoadingReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3145E02CFEB8910098DA68 /* LoadingReusableView.swift */; };
 		DD3145E32CFEC6010098DA68 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3145E22CFEC6010098DA68 /* FeedCell.swift */; };
 		DD775E7A2D00471400EBED6A /* AnimeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD775E792D00471400EBED6A /* AnimeFetcher.swift */; };
+		DDA6D3592D014F2B004E7FBF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDA6D3582D014F2B004E7FBF /* RealmSwift */; };
+		DDA6D35B2D015232004E7FBF /* AnimeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D35A2D015232004E7FBF /* AnimeRealm.swift */; };
+		DDA6D35D2D015799004E7FBF /* RealmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D35C2D015799004E7FBF /* RealmDataManager.swift */; };
 		DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633C2CFAA915000E77FA /* AppDelegate.swift */; };
 		DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */; };
 		DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA763402CFAA915000E77FA /* FeedViewController.swift */; };
@@ -23,12 +26,27 @@
 		DDB0DEC92CFDA7780042C9A9 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC82CFDA7780042C9A9 /* FeedView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DD0FE2372D0146B2006C8754 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		DD3145DC2CFEAD8F0098DA68 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DD3145DE2CFEB0C40098DA68 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		DD3145E02CFEB8910098DA68 /* LoadingReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingReusableView.swift; sourceTree = "<group>"; };
 		DD3145E22CFEC6010098DA68 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		DD775E792D00471400EBED6A /* AnimeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeFetcher.swift; sourceTree = "<group>"; };
+		DDA6D35A2D015232004E7FBF /* AnimeRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeRealm.swift; sourceTree = "<group>"; };
+		DDA6D35C2D015799004E7FBF /* RealmDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataManager.swift; sourceTree = "<group>"; };
 		DDA763392CFAA915000E77FA /* InfinityFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinityFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA7633C2CFAA915000E77FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA6D3592D014F2B004E7FBF /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +131,8 @@
 		DDA9D6802CFC1C9A00C9D2A9 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				DDA6D35C2D015799004E7FBF /* RealmDataManager.swift */,
+				DDA6D35A2D015232004E7FBF /* AnimeRealm.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -173,12 +194,16 @@
 				DDA763352CFAA915000E77FA /* Sources */,
 				DDA763362CFAA915000E77FA /* Frameworks */,
 				DDA763372CFAA915000E77FA /* Resources */,
+				DD0FE2372D0146B2006C8754 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = InfinityFeed;
+			packageProductDependencies = (
+				DDA6D3582D014F2B004E7FBF /* RealmSwift */,
+			);
 			productName = InfinityFeed;
 			productReference = DDA763392CFAA915000E77FA /* InfinityFeed.app */;
 			productType = "com.apple.product-type.application";
@@ -207,6 +232,9 @@
 				Base,
 			);
 			mainGroup = DDA763302CFAA915000E77FA;
+			packageReferences = (
+				DDA6D3572D014F2B004E7FBF /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = DDA7633A2CFAA915000E77FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -243,6 +271,8 @@
 				DD3145DD2CFEAD8F0098DA68 /* Response.swift in Sources */,
 				DDB0DEC72CFDA72C0042C9A9 /* GenericViewController.swift in Sources */,
 				DDB0DEC12CFD64C50042C9A9 /* AnimeLoader.swift in Sources */,
+				DDA6D35B2D015232004E7FBF /* AnimeRealm.swift in Sources */,
+				DDA6D35D2D015799004E7FBF /* RealmDataManager.swift in Sources */,
 				DD3145E12CFEB8910098DA68 /* LoadingReusableView.swift in Sources */,
 				DDB0DEC52CFD83380042C9A9 /* Anime.swift in Sources */,
 			);
@@ -458,6 +488,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DDA6D3572D014F2B004E7FBF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.47.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DDA6D3582D014F2B004E7FBF /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDA6D3572D014F2B004E7FBF /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DDA763312CFAA915000E77FA /* Project object */;
 }
