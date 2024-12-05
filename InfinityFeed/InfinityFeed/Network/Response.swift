@@ -1,6 +1,7 @@
 import Foundation
 
 // MARK: - Response
+/// Struct to hold the data which being loaded from API
 struct Response: Codable {
 	let data: [Datum]
 	let meta: ResponseMeta
