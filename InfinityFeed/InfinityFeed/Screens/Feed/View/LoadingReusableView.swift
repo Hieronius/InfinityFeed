@@ -1,14 +1,18 @@
 import UIKit
 
+/// `View` for custom loading indicator inside our collection view
 final class LoadingReusableView: UICollectionReusableView {
 
+	// MARK: Public Properties
+
 	let activityIndicator = UIActivityIndicatorView(style: .medium)
+
+	// MARK: - Initialization
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
 		setupView()
-
 	}
 
 	@available(*, unavailable)
@@ -17,9 +21,9 @@ final class LoadingReusableView: UICollectionReusableView {
 	}
 }
 
-// MARK: Setup View
+// MARK: Private Methods
 
-extension LoadingReusableView {
+private extension LoadingReusableView {
 
 	func setupView() {
 		activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +33,6 @@ extension LoadingReusableView {
 
 			activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
 			activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
-
 		])
 	}
 }
