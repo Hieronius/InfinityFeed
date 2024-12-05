@@ -1,15 +1,22 @@
 import UIKit
 
+/// Main ViewController to display the Feed
 final class FeedViewController: GenericViewController<FeedView> {
 
-	let loadService: AnimeLoaderProtocol
-	let fetchService: AnimeFetcherProtocol
-	let dataManager: RealmDataManagerProtocol
+	// MARK: - Dependencies
 
-	var isLoadingMoreData = false
-	var animesCash: [Anime] = []
+	private let loadService: AnimeLoaderProtocol
+	private let fetchService: AnimeFetcherProtocol
+	private let dataManager: RealmDataManagerProtocol
 
-	var dataSource: UICollectionViewDiffableDataSource<Section, Anime>?
+	// MARK: Private Properties
+
+	private var isLoadingMoreData = false
+	private var animesCash: [Anime] = []
+
+	private var dataSource: UICollectionViewDiffableDataSource<Section, Anime>?
+
+	// MARK: - Initialization
 
 	init(loadService: AnimeLoaderProtocol,
 		 fetchService: AnimeFetcherProtocol,
@@ -25,6 +32,8 @@ final class FeedViewController: GenericViewController<FeedView> {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	// MARK: - Life Cycle
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupBehaviour()
@@ -32,6 +41,8 @@ final class FeedViewController: GenericViewController<FeedView> {
 		loadAnimesIfNeeded()
 
 	}
+
+	// MARK: - Deinitialization
 
 	deinit {
 		if dataManager.loadAllAnimes().isEmpty {
@@ -79,7 +90,6 @@ private extension FeedViewController {
 						existingAnime.title == newAnime.title
 					}
 				}
-
 				animesCash.append(contentsOf: uniqueNewAnimes)
 
 				applySnapshot(animesCash)
@@ -100,7 +110,6 @@ private extension FeedViewController {
 
 				loadService.incrementPage()
 
-
 				let uniqueNewAnimes = newAnimes.filter { newAnime in
 					!animesCash.contains { existingAnime in
 						existingAnime.title == newAnime.title
@@ -116,15 +125,13 @@ private extension FeedViewController {
 			}
 
 			isLoadingMoreData = false
-
 		}
 	}
-
 }
 
 // MARK: - Setup DiffableDataSource
 
-extension FeedViewController {
+private extension FeedViewController {
 
 	func setupDataSource() {
 
@@ -165,7 +172,6 @@ extension FeedViewController {
 
 	}
 }
-
 
 // MARK: - UICollectionViewDelegate
 
