@@ -1,17 +1,20 @@
 import UIKit
 
+/// Custom `Cell` for our infinite feed collection view
 final class FeedCell: UICollectionViewCell {
 
 	// MARK: Public Properties
 
 	static let reuseIdentifier = "FeedCell"
 
-	let containerView = UIView()
-	let horizontalStackView = UIStackView()
-	let imageView = UIImageView()
-	let titleLabel = UILabel()
-	let verticalStackView = UIStackView()
-	let descriptionLabel = UILabel()
+	// MARK: Private Properties
+
+	private let containerView = UIView()
+	private let horizontalStackView = UIStackView()
+	private let imageView = UIImageView()
+	private let titleLabel = UILabel()
+	private let verticalStackView = UIStackView()
+	private let descriptionLabel = UILabel()
 
 	// MARK: - Initialization
 
@@ -33,8 +36,8 @@ final class FeedCell: UICollectionViewCell {
 
 extension FeedCell {
 
+	/// Method to populate our cell with data from specific anime
 	func configure(with anime: Anime) {
-
 		imageView.image = anime.image
 		titleLabel.text = anime.title
 		descriptionLabel.text = anime.description
@@ -43,7 +46,7 @@ extension FeedCell {
 
 // MARK: - EmbedViews
 
-extension FeedCell {
+private extension FeedCell {
 
 	func embedViews() {
 
@@ -56,13 +59,12 @@ extension FeedCell {
 
 		horizontalStackView.addArrangedSubview(imageView)
 		horizontalStackView.addArrangedSubview(titleLabel)
-
 	}
 }
 
 // MARK: - SetupAppearance
 
-extension FeedCell {
+private extension FeedCell {
 
 	func setupAppearance() {
 
@@ -75,19 +77,18 @@ extension FeedCell {
 
 		imageView.contentMode = .scaleAspectFit
 
-		// MARK: TODO: Implement larger title and change it's color
 		titleLabel.textColor = .white
 		titleLabel.font = .boldSystemFont(ofSize: 25)
 		titleLabel.numberOfLines = 0
+
 		descriptionLabel.numberOfLines = 0
 		descriptionLabel.font = .italicSystemFont(ofSize: 18)
-
 	}
 }
 
 // MARK: SetupLayout
 
-extension FeedCell {
+private extension FeedCell {
 
 	func setupLayout() {
 
@@ -110,7 +111,6 @@ extension FeedCell {
 			
 			verticalStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
 			verticalStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-
 		])
 	}
 }
