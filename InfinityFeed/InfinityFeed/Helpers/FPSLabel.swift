@@ -1,10 +1,15 @@
 import UIKit
 
+/// Custom label to display current FPS inside the app
 final class FPSLabel: UILabel {
+
+	// MARK: - Properties
 
 	private var displayLink: CADisplayLink?
 	private var lastTimestamp: CFTimeInterval = 0
 	private var frameCount: Int = 0
+
+	// MARK: - Initialization
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -15,8 +20,13 @@ final class FPSLabel: UILabel {
 		super.init(coder: coder)
 		setup()
 	}
+}
 
-	private func setup() {
+// MARK: - Private Methods
+
+private extension FPSLabel {
+
+	func setup() {
 		self.textColor = .white
 		self.backgroundColor = .black.withAlphaComponent(0.5)
 		self.font = UIFont.systemFont(ofSize: 14)
@@ -25,7 +35,7 @@ final class FPSLabel: UILabel {
 		displayLink?.add(to: .main, forMode: .default)
 	}
 
-	@objc private func update() {
+	@objc func update() {
 		frameCount += 1
 
 		let currentTimestamp = CACurrentMediaTime()
