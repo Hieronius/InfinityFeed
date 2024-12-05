@@ -1,15 +1,18 @@
 import UIKit
 
+/// `RootView` of FeedViewController
 final class FeedView: UIView {
 
-	let fpsLabel = FPSLabel(frame: CGRect(x: 250,
-										  y: 50,
-										  width: 100,
-										  height: 30))
-
+	// MARK: - Public Properties
 
 	var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 
+	// MARK: - Private Properties
+
+	private let fpsLabel = FPSLabel(frame: CGRect(x: 250,
+										  y: 50,
+										  width: 100,
+										  height: 30))
 
 	// MARK: - Initialization
 
@@ -24,7 +27,9 @@ final class FeedView: UIView {
 	}
 }
 
-extension FeedView {
+// MARK: - Private Methods
+
+private extension FeedView {
 
 	func manageSubviews() {
 
@@ -89,14 +94,10 @@ extension FeedView {
 						UICollectionView.elementKindSectionFooter,
 					alignment: .bottom
 				)
-
 			]
-
 			return section
 		}
 	}
-
-
 }
 
 
