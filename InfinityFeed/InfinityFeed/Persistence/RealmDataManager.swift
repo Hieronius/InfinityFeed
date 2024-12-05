@@ -1,6 +1,7 @@
 import Foundation
 import RealmSwift
 
+/// Protocol for implementation of the manager to work with Realm Data Storage
 protocol RealmDataManagerProtocol: AnyObject {
 
 	func saveAllAnimes(animes: [Anime])
@@ -12,10 +13,16 @@ protocol RealmDataManagerProtocol: AnyObject {
 	func editAnime(anime: Anime)
 }
 
+/// Implementation of the manager to work with Realm Data Storage
 final class RealmDataManager: RealmDataManagerProtocol {
+
+	// MARK: - Private Properties
 
 	private let realm = try! Realm()
 
+	// MARK: - Public Properties
+
+	/// Save the whole array of cashed animes to the storage
 	func saveAllAnimes(animes: [Anime]) {
 		let animeRealmObjects = animes.map { anime in
 			AnimeRealm(id: anime.id,
@@ -28,6 +35,7 @@ final class RealmDataManager: RealmDataManagerProtocol {
 		}
 	}
 
+	/// Method to get all stored animes from the storage
 	@discardableResult
 	func loadAllAnimes() -> [Anime] {
 		let animeRealmObjects = realm.objects(AnimeRealm.self)
@@ -40,6 +48,7 @@ final class RealmDataManager: RealmDataManagerProtocol {
 		}
 	}
 
+	/// Remove all stored animes from the storage
 	func deleteAllAnimes() {
 		let animes = realm.objects(AnimeRealm.self)
 		try! realm.write {
@@ -47,6 +56,7 @@ final class RealmDataManager: RealmDataManagerProtocol {
 		}
 	}
 
+	/// Allows to save only a specific anime to the storage
 	func saveSingleAnime(anime: Anime) {
 		let animeRealm = AnimeRealm(id: anime.id,
 									title: anime.title,
@@ -58,6 +68,7 @@ final class RealmDataManager: RealmDataManagerProtocol {
 
 	}
 
+	/// Delete only specific anime from the storage
 	func deleteAnime(anime: Anime) {
 		if let objectToDelete = realm.object(ofType: AnimeRealm.self, forPrimaryKey: anime.id) {
 
@@ -68,6 +79,7 @@ final class RealmDataManager: RealmDataManagerProtocol {
 		}
 	}
 
+	/// Method to change a specific anime inside the storage
 	func editAnime(anime: Anime) {
 		if let objectToEdit = realm.object(ofType: AnimeRealm.self, forPrimaryKey: anime.id) {
 
