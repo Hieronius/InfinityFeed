@@ -22,6 +22,7 @@
 		DDA6D3762D018145004E7FBF /* AnimeLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3752D018145004E7FBF /* AnimeLoaderTests.swift */; };
 		DDA6D3782D0181A6004E7FBF /* AnimeFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3772D0181A6004E7FBF /* AnimeFetcherTests.swift */; };
 		DDA6D37A2D01821E004E7FBF /* RealmDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3792D01821E004E7FBF /* RealmDataManagerTests.swift */; };
+		DDA6D37E2D0189AC004E7FBF /* FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D37D2D0189AC004E7FBF /* FPSLabel.swift */; };
 		DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633C2CFAA915000E77FA /* AppDelegate.swift */; };
 		DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */; };
 		DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA763402CFAA915000E77FA /* FeedViewController.swift */; };
@@ -72,6 +73,7 @@
 		DDA6D3752D018145004E7FBF /* AnimeLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeLoaderTests.swift; sourceTree = "<group>"; };
 		DDA6D3772D0181A6004E7FBF /* AnimeFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeFetcherTests.swift; sourceTree = "<group>"; };
 		DDA6D3792D01821E004E7FBF /* RealmDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataManagerTests.swift; sourceTree = "<group>"; };
+		DDA6D37D2D0189AC004E7FBF /* FPSLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSLabel.swift; sourceTree = "<group>"; };
 		DDA763392CFAA915000E77FA /* InfinityFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinityFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA7633C2CFAA915000E77FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				DDB0DEC62CFDA72C0042C9A9 /* GenericViewController.swift */,
+				DDA6D37D2D0189AC004E7FBF /* FPSLabel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				DD3145E32CFEC6010098DA68 /* FeedCell.swift in Sources */,
 				DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */,
 				DD775E7A2D00471400EBED6A /* AnimeFetcher.swift in Sources */,
+				DDA6D37E2D0189AC004E7FBF /* FPSLabel.swift in Sources */,
 				DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */,
 				DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */,
 				DD3145DD2CFEAD8F0098DA68 /* Response.swift in Sources */,

@@ -2,6 +2,12 @@ import UIKit
 
 final class FeedView: UIView {
 
+	let fpsLabel = FPSLabel(frame: CGRect(x: 250,
+										  y: 50,
+										  width: 100,
+										  height: 30))
+
+
 	var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 
 
@@ -10,10 +16,6 @@ final class FeedView: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		 manageSubviews()
-//					embedViews()
-		//			setupAppearance()
-		//			setupLayout()
-		//			setupData()
 	}
 
 	@available(*, unavailable)
@@ -51,6 +53,7 @@ extension FeedView {
 
 		])
 
+		addSubview(fpsLabel)
 	}
 
 	func createLayout() -> UICollectionViewLayout {

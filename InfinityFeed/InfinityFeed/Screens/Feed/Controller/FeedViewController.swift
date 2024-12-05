@@ -5,6 +5,7 @@ final class FeedViewController: GenericViewController<FeedView> {
 	let loadService: AnimeLoaderProtocol
 	let fetchService: AnimeFetcherProtocol
 	let dataManager: RealmDataManagerProtocol
+
 	var isLoadingMoreData = false
 	var animesCash: [Anime] = []
 
@@ -26,7 +27,6 @@ final class FeedViewController: GenericViewController<FeedView> {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
 		setupBehaviour()
 		setupDataSource()
 		loadAnimesIfNeeded()
@@ -54,11 +54,9 @@ private extension FeedViewController {
 	func loadAnimesIfNeeded() {
 		if dataManager.loadAllAnimes().isEmpty {
 			loadInitialData()
-			print("load first chunk of the content from the server")
 		} else {
 			animesCash = dataManager.loadAllAnimes()
 			applySnapshot(animesCash)
-			print("get animes from the storage")
 		}
 	}
 
