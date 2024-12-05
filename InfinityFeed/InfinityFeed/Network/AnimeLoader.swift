@@ -15,7 +15,7 @@ final class AnimeLoader: AnimeLoaderProtocol {
 	let baseURL = "https://kitsu.app/api/edge/anime"
 
 	private var currentPage = 0
-	private var perPage = 5 // if set to 5 - crush
+	private var perPage = 5
 
 	private(set) var session: URLSession
 

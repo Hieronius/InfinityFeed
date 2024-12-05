@@ -15,6 +15,13 @@
 		DDA6D3592D014F2B004E7FBF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDA6D3582D014F2B004E7FBF /* RealmSwift */; };
 		DDA6D35B2D015232004E7FBF /* AnimeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D35A2D015232004E7FBF /* AnimeRealm.swift */; };
 		DDA6D35D2D015799004E7FBF /* RealmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D35C2D015799004E7FBF /* RealmDataManager.swift */; };
+		DDA6D36E2D017E59004E7FBF /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D36D2D017E59004E7FBF /* FeedViewControllerTests.swift */; };
+		DDA6D3702D017F8F004E7FBF /* MockAnimeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D36F2D017F8F004E7FBF /* MockAnimeLoader.swift */; };
+		DDA6D3722D017FC6004E7FBF /* MockAnimeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3712D017FC6004E7FBF /* MockAnimeFetcher.swift */; };
+		DDA6D3742D01800F004E7FBF /* MockRealmDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3732D01800F004E7FBF /* MockRealmDataManager.swift */; };
+		DDA6D3762D018145004E7FBF /* AnimeLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3752D018145004E7FBF /* AnimeLoaderTests.swift */; };
+		DDA6D3782D0181A6004E7FBF /* AnimeFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3772D0181A6004E7FBF /* AnimeFetcherTests.swift */; };
+		DDA6D37A2D01821E004E7FBF /* RealmDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6D3792D01821E004E7FBF /* RealmDataManagerTests.swift */; };
 		DDA7633D2CFAA915000E77FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633C2CFAA915000E77FA /* AppDelegate.swift */; };
 		DDA7633F2CFAA915000E77FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */; };
 		DDA763412CFAA915000E77FA /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA763402CFAA915000E77FA /* FeedViewController.swift */; };
@@ -25,6 +32,16 @@
 		DDB0DEC72CFDA72C0042C9A9 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC62CFDA72C0042C9A9 /* GenericViewController.swift */; };
 		DDB0DEC92CFDA7780042C9A9 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0DEC82CFDA7780042C9A9 /* FeedView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DDA6D3682D017B18004E7FBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DDA763312CFAA915000E77FA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DDA763382CFAA915000E77FA;
+			remoteInfo = InfinityFeed;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DD0FE2372D0146B2006C8754 /* Embed Frameworks */ = {
@@ -47,6 +64,14 @@
 		DD775E792D00471400EBED6A /* AnimeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeFetcher.swift; sourceTree = "<group>"; };
 		DDA6D35A2D015232004E7FBF /* AnimeRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeRealm.swift; sourceTree = "<group>"; };
 		DDA6D35C2D015799004E7FBF /* RealmDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataManager.swift; sourceTree = "<group>"; };
+		DDA6D3642D017B18004E7FBF /* InfinityFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfinityFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDA6D36D2D017E59004E7FBF /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
+		DDA6D36F2D017F8F004E7FBF /* MockAnimeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnimeLoader.swift; sourceTree = "<group>"; };
+		DDA6D3712D017FC6004E7FBF /* MockAnimeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAnimeFetcher.swift; sourceTree = "<group>"; };
+		DDA6D3732D01800F004E7FBF /* MockRealmDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRealmDataManager.swift; sourceTree = "<group>"; };
+		DDA6D3752D018145004E7FBF /* AnimeLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeLoaderTests.swift; sourceTree = "<group>"; };
+		DDA6D3772D0181A6004E7FBF /* AnimeFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeFetcherTests.swift; sourceTree = "<group>"; };
+		DDA6D3792D01821E004E7FBF /* RealmDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataManagerTests.swift; sourceTree = "<group>"; };
 		DDA763392CFAA915000E77FA /* InfinityFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinityFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDA7633C2CFAA915000E77FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDA7633E2CFAA915000E77FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +86,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DDA6D3612D017B18004E7FBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DDA763362CFAA915000E77FA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,10 +104,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DDA6D3652D017B18004E7FBF /* InfinityFeedTests */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6D37C2D018228004E7FBF /* Tests */,
+				DDA6D37B2D018223004E7FBF /* Mock */,
+			);
+			path = InfinityFeedTests;
+			sourceTree = "<group>";
+		};
+		DDA6D37B2D018223004E7FBF /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6D36F2D017F8F004E7FBF /* MockAnimeLoader.swift */,
+				DDA6D3712D017FC6004E7FBF /* MockAnimeFetcher.swift */,
+				DDA6D3732D01800F004E7FBF /* MockRealmDataManager.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		DDA6D37C2D018228004E7FBF /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DDA6D36D2D017E59004E7FBF /* FeedViewControllerTests.swift */,
+				DDA6D3752D018145004E7FBF /* AnimeLoaderTests.swift */,
+				DDA6D3772D0181A6004E7FBF /* AnimeFetcherTests.swift */,
+				DDA6D3792D01821E004E7FBF /* RealmDataManagerTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		DDA763302CFAA915000E77FA = {
 			isa = PBXGroup;
 			children = (
 				DDA7633B2CFAA915000E77FA /* InfinityFeed */,
+				DDA6D3652D017B18004E7FBF /* InfinityFeedTests */,
 				DDA7633A2CFAA915000E77FA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				DDA763392CFAA915000E77FA /* InfinityFeed.app */,
+				DDA6D3642D017B18004E7FBF /* InfinityFeedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,6 +251,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DDA6D3632D017B18004E7FBF /* InfinityFeedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DDA6D36A2D017B18004E7FBF /* Build configuration list for PBXNativeTarget "InfinityFeedTests" */;
+			buildPhases = (
+				DDA6D3602D017B18004E7FBF /* Sources */,
+				DDA6D3612D017B18004E7FBF /* Frameworks */,
+				DDA6D3622D017B18004E7FBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DDA6D3692D017B18004E7FBF /* PBXTargetDependency */,
+			);
+			name = InfinityFeedTests;
+			productName = InfinityFeedTests;
+			productReference = DDA6D3642D017B18004E7FBF /* InfinityFeedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DDA763382CFAA915000E77FA /* InfinityFeed */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DDA7634D2CFAA917000E77FA /* Build configuration list for PBXNativeTarget "InfinityFeed" */;
@@ -218,6 +300,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					DDA6D3632D017B18004E7FBF = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = DDA763382CFAA915000E77FA;
+					};
 					DDA763382CFAA915000E77FA = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -240,11 +326,19 @@
 			projectRoot = "";
 			targets = (
 				DDA763382CFAA915000E77FA /* InfinityFeed */,
+				DDA6D3632D017B18004E7FBF /* InfinityFeedTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DDA6D3622D017B18004E7FBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DDA763372CFAA915000E77FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +351,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DDA6D3602D017B18004E7FBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DDA6D36E2D017E59004E7FBF /* FeedViewControllerTests.swift in Sources */,
+				DDA6D3762D018145004E7FBF /* AnimeLoaderTests.swift in Sources */,
+				DDA6D3702D017F8F004E7FBF /* MockAnimeLoader.swift in Sources */,
+				DDA6D37A2D01821E004E7FBF /* RealmDataManagerTests.swift in Sources */,
+				DDA6D3722D017FC6004E7FBF /* MockAnimeFetcher.swift in Sources */,
+				DDA6D3782D0181A6004E7FBF /* AnimeFetcherTests.swift in Sources */,
+				DDA6D3742D01800F004E7FBF /* MockRealmDataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DDA763352CFAA915000E77FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +388,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		DDA6D3692D017B18004E7FBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DDA763382CFAA915000E77FA /* InfinityFeed */;
+			targetProxy = DDA6D3682D017B18004E7FBF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		DDA763472CFAA917000E77FA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -292,6 +408,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DDA6D36B2D017B18004E7FBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7YW3V66545;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = HieroniusTeam.InfinityFeedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InfinityFeed.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InfinityFeed";
+			};
+			name = Debug;
+		};
+		DDA6D36C2D017B18004E7FBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7YW3V66545;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = HieroniusTeam.InfinityFeedTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InfinityFeed.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/InfinityFeed";
+			};
+			name = Release;
+		};
 		DDA7634B2CFAA917000E77FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -469,6 +623,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DDA6D36A2D017B18004E7FBF /* Build configuration list for PBXNativeTarget "InfinityFeedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DDA6D36B2D017B18004E7FBF /* Debug */,
+				DDA6D36C2D017B18004E7FBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DDA763342CFAA915000E77FA /* Build configuration list for PBXProject "InfinityFeed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
