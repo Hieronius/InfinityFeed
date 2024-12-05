@@ -1,12 +1,17 @@
 import UIKit
 import RealmSwift
 
+/// Object to store a Realm-related anime
 final class AnimeRealm: Object {
+
+	// MARK: - Public Properties
 	
 	@Persisted var id: UUID
 	@Persisted var title: String = ""
 	@Persisted var discription: String?
 	@Persisted var imageData: Data?
+
+	// MARK: Initialization
 	
 	convenience init(id: UUID,
 					 title: String,
@@ -21,6 +26,8 @@ final class AnimeRealm: Object {
 			self.imageData = image.jpegData(compressionQuality: 0.8)
 		}
 	}
+
+	// MARK: - Public Methods
 	
 	func getImage() -> UIImage? {
 		guard let data = imageData else { return UIImage() }
